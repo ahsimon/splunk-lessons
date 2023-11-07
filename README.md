@@ -12,7 +12,7 @@ Create a splunk account
 wget -O splunk-9.1.1.tgz "https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-Linux-x86_64.tgz"
 ```
 
-2. Install splunk
+2. Install Splunk
 ```sh
 tar xvf  splunk-9.1.1.tgz -C /opt
 ```
@@ -81,3 +81,12 @@ sourcetype=access_combined_wcookie
 ```
 
 **eventstats** Adds summary statistics to all search results
+
+```
+index=_internal log_level=WARN OR log_level=ERROR
+| stats count by component
+| sort count
+| streamstats sum(count)
+```
+
+**streamstats** Adds summary statistics to all search results in a streaming manner
