@@ -90,3 +90,15 @@ index=_internal log_level=WARN OR log_level=ERROR
 ```
 
 **streamstats** Adds summary statistics to all search results in a streaming manner
+
+**eval** 
+  * Very powerful command to manipulate and enhance the results
+  * Creates a new field by evaluating an expression
+  * Overwrites the field if already exists  
+
+```
+index=main
+sourcetype=access_combined_wcookie
+| eval kbytes = bytes /1024
+```
+Creates a new field named Kbytes and stores the value of the expression bytes/1024 on every event where bytes is present
